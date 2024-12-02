@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="toolbar">DASHBOARD</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/main-nav/users']" class="nav-link">
+        <mat-icon matListIcon>account_circle</mat-icon>
+        API DE USUARIOS
+      </a>
+      <a mat-list-item [routerLink]="['/main-nav/pokemon']" class="nav-link">
+        <mat-icon matListIcon>library_books</mat-icon>
+        API DE POKEMON
+      </a>
+    </mat-nav-list>  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>CONTENIDO</span>
+      <span class="spacer"></span>
+      <div class="user-menu">
+        <img [src]="userImage" alt="User Image" class="user-avatar" mat-icon-button [matMenuTriggerFor]="menu">
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Cerrar Sesión
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <router-outlet>
+      
+    </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,95 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div class="body">
+    <div class="veen">
+        <div class="wrapper">
+            <form (ngSubmit)="onSubmit()" tabindex="500">
+                <h3>Iniciar sesión</h3>
+                <div class="mail">
+                    <input type="text" id="username" [(ngModel)]="email" name="username" required>
+                    <label>Correo electronico</label>
+                </div>
+                <div class="passwd">
+                    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="dark" id="loginButton">Iniciar sesión</button>
+                </div>
+                <div class="submit">
+                    <button class="dark" type="button">Regístrate</button>
+                </div>
+                <p *ngIf="error" class="error">{{ error }}</p>
+            </form>
+        </div>
+    </div>  
+</div>
+
+<style type="text/css">
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    .veen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f7f7f7;
+    }
+    .wrapper {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+    .wrapper form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .wrapper h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    .mail, .passwd {
+        position: relative;
+    }
+    .mail label, .passwd label {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: #888;
+        pointer-events: none;
+    }
+    .mail input, .passwd input {
+        width: 100%;
+        padding: 8px 8px 8px 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+    }
+    .dark {
+        background-color: #0052cc;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .dark:hover {
+        background-color: #0041a8;
+    }
+    .error {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+    }
+</style>
